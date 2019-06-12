@@ -51,7 +51,6 @@ export default {
 .all {
   width: 100%;
   height: 2.76rem;
-  margin-top: 2.4rem;
 }
 .swiper-container {
   width: 100%;
