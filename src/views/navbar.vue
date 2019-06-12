@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="nav">
     <nav-search></nav-search>
     <nav-swipe></nav-swipe>
   </div>
@@ -17,5 +17,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.nav{
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: #fdde4a;
+}
 </style>
