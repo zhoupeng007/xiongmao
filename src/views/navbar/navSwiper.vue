@@ -19,4 +19,12 @@ export default {
     height: 1.333rem;
     margin: 0 .8rem 0 2.1rem;
   }
+  .swiper-container {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+  }
 </style>

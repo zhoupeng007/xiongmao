@@ -5,7 +5,10 @@
     </div>
     <div class="line"></div>
     <navSwiper>
-      <div class="swiper-slide" v-for="data in datalist" :key="data.id"></div>
+      <!--  eslint-disable-line -->
+      <div class="swiper-slide" v-for="data in datalist" :key="data.id">
+        <div  v-if="data.id !== 1">{{data.name}}</div>
+      </div>
     </navSwiper>
   </div>
 </template>

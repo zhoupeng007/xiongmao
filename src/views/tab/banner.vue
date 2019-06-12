@@ -1,6 +1,6 @@
 <template>
   <div class="all">
-    <div class="swiper-container">
+    <div class="swiper-container lijingbanner">
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="ban in bannerlist" :key="ban.id">
             <img :src="ban.imageUrl">
@@ -28,7 +28,7 @@ export default {
   },
   updated () {
     // eslint-disable-next-line
-    var mySwiper = new Swiper(".swiper-container", {
+    var mySwiper = new Swiper(".lijingbanner", {
       loop: true, // 循环模式选项
       // 如果需要分页器
       pagination: {
