@@ -1,6 +1,6 @@
 <template>
-  <div class="all">
-    <div class="split-line">
+  <div>
+     <div class="split-line">
         <span class="befor">━━━━━◆</span>
         <span class="text">大家都在逛</span>
         <span class="befor">◆━━━━━</span>
@@ -63,17 +63,20 @@ export default {
   padding: 0;
   margin: 0;
 }
-.split-line{
-    height: 1.33rem;
-    line-height: 1.33rem;
-    text-align: center;
-    font-size: .32rem;
-    color: #877a73;
 
-}
-.split-line .befor{
-    color: #fdde4a;
-}
+ .split-line{
+       height: 1.33rem;
+       line-height: 1.33rem;
+       text-align: center;
+       font-size: 12px;
+      font-size: .32rem;
+        color: #877a73;
+
+  }
+  .split-line .befor{
+       color: #fdde4a;
+   }
+
 ul {
   width: 100%;
   height: 100%;

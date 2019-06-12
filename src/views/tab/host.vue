@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="host">
             <!-- <div class="split-line" v-for="data in title" :key="data.id">
                <span>{{data.categoriesTitle}}</span>
             </div> -->
@@ -42,8 +42,8 @@ export default {
        margin: 0;
        padding: 0;
    }
-   div{
-       display: block;
+   .host{
+     margin-top: 2.33rem;
    }
    .split-line{
        height: 1.33rem;
@@ -68,6 +68,8 @@ export default {
     img{
         width: 1.28rem;
         height: 1.28rem;
+        margin-left: 50%;
+        transform: translate(-50%);
         cursor: pointer;
     }
     span{

@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import banner from './banner'
+import banner from '@/views/tab/banner'
 export default {
   components: {
     banner

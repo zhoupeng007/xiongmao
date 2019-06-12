@@ -6,12 +6,16 @@
 </template>
 
 <script>
-import host from './host'
-import waterfall from './Waterfall'
+import host from '@/views/tab/host'
+import waterfall from '@/views/tab/Waterfall'
 export default {
   components: {
-    waterfall,
-    host
+    host,
+    waterfall
   }
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>
