@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="film">
     首页
     <banner></banner>
     <waterfall></waterfall>
@@ -15,3 +15,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .film{
+    padding-top: 2.33rem
+  }
+</style>
