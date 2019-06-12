@@ -1,14 +1,13 @@
 <template>
   <div class="film">
-    首页
-    <banner></banner>
+    <grids></grids>
   </div>
 </template>
 <script>
-import banner from './banner-swiper'
+import grids from './film/grids'
 export default {
   components: {
-    banner
+    grids
   }
 }
 </script>
