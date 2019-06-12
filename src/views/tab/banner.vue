@@ -37,6 +37,10 @@ export default {
       // 如果需要滚动条
       scrollbar: {
         el: '.swiper-scrollbar'
+      },
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
       }
     })
   }
