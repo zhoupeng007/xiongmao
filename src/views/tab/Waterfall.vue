@@ -36,7 +36,7 @@ export default {
   },
   mounted () {
     axios.get(`http://www.xiongmaoyouxuan.com/api/tab/2?start=0`).then(res => {
-      console.log(res.data.data.list)
+      console.log(res.data.data.items.list)
       this.datalist = res.data.data.items.list
     })
   },
