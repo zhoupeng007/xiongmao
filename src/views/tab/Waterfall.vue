@@ -1,6 +1,10 @@
 <template>
   <div class="all">
-    <div class="comm">大家都在逛</div>
+    <div class="split-line">
+        <span class="befor">━━━━━◆</span>
+        <span class="text">大家都在逛</span>
+        <span class="befor">◆━━━━━</span>
+    </div>
     <ul
       v-infinite-scroll="loadMore"
       infinite-scroll-immediate-check="false"
@@ -42,6 +46,7 @@ export default {
   },
   methods: {
     loadMore () {
+      this.isChufa = true
       this.current = this.current + this.number
       console.log('到底了 ajax请求', this.current)
       axios.get(`http://www.xiongmaoyouxuan.com/api/tab/2/feeds?start=${this.current}&sort=0`).then(res => {
@@ -58,15 +63,16 @@ export default {
   padding: 0;
   margin: 0;
 }
-.comm {
-  width: 100%;
-  text-align: center;
-  height: 1.33rem;
-  line-height: 1.33rem;
-  vertical-align: middle;
-  font-size: 0.32rem;
-  color: hsla(21, 8%, 49%, 0.7);
-  background-color: #f5f5f5;
+.split-line{
+    height: 1.33rem;
+    line-height: 1.33rem;
+    text-align: center;
+    font-size: .32rem;
+    color: #877a73;
+
+}
+.split-line .befor{
+    color: #fdde4a;
 }
 ul {
   width: 100%;

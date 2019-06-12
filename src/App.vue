@@ -27,5 +27,17 @@ export default {
 </script>
 
 <style lang="scss">
-
+*{
+  padding: 0;
+  margin: 0;
+}
+img{
+  display: block;
+}
+a{
+  text-decoration: none;
+}
+ul{
+  list-style: none;
+}
 </style>

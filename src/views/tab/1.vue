@@ -1,16 +1,19 @@
 <template>
-  <div>
+  <div class="film">
     <banner></banner>
-    <waterfall></waterfall>
   </div>
 </template>
 <script>
-import waterfall from './Waterfall'
 import banner from './banner'
 export default {
   components: {
-    waterfall,
     banner
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .film{
+    padding-top: 2.33rem
+  }
+</style>
