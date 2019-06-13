@@ -47,9 +47,9 @@ export default {
       this.isChufa = true
       this.current = this.current + this.number
       console.log('到底了 ajax请求', this.current)
-      axios.get(`http://quan.lukou.com/api/category/${this.$route.params.id}/items?start=${this.current}&sort=0`).then(res => {
+      axios.get(`http://quan.lukou.com/api/category/${this.$route.params.id}/items?start=${this.current}`).then(res => {
         console.log(res.data.data.items.list)
-        this.distlist = [...this.distlist, ...res.data.data.list]
+        this.distlist = [...this.distlist, ...res.data.data.items.list]
         this.isChufa = false
       })
       // http://quan.lukou.com/api/category/1681/items?start=0&sort=0
