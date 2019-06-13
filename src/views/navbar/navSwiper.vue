@@ -1,7 +1,7 @@
 <template>
   <div class="navSwiper">
-    <div class="swiper-container">
-    <div class="swiper-wrapper">
+    <div class="swiper-container xppnav">
+    <div class="swiper-wrapper xppnav1">
       <slot></slot>
     </div>
   </div>
@@ -9,8 +9,15 @@
 </template>
 
 <script>
+import Swiper from 'swiper'
 export default {
-
+  mounted () {
+    // eslint-disable-next-line
+    var swiper = new Swiper('.xppnav', {
+      slidesPerView: 4,
+      spaceBetween: 10
+    })
+  }
 }
 </script>
 
@@ -26,5 +33,21 @@ export default {
     list-style: none;
     padding: 0;
     z-index: 1;
+  }
+  .xppnav{
+    height: 100%;
+  }
+  .xppnav1{
+    height: 100%;
+  }
+  .xppnav2{
+    height: 100%;
+    width: auto;
+    font-size: .3rem;
+    line-height: 1.3rem;
+  }
+  .swiper-slide{
+    height: 100%;
+    width:auto;
   }
 </style>

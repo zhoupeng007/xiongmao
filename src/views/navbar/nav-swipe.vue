@@ -4,10 +4,10 @@
       <router-link to="/" class="home_nav_items" tag="div" active-class="home_nav_items_acrive">今日推荐</router-link>
     </div>
     <div class="line"></div>
-    <navSwiper>
+    <navSwiper :key="datalist.length">
       <!--  eslint-disable-line -->
-      <div class="swiper-slide" v-for="data in datalist" :key="data.id">
-        <div  v-if="data.id !== 1">{{data.name}}</div>
+      <div class="swiper-slide" v-for="data in datalist" :key="data.id" v-show="data.id !== 1">
+        <router-link :to="`/tab/${data.id}`" tag="div" class="xppnav2">{{data.name}}</router-link>
       </div>
     </navSwiper>
   </div>

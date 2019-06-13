@@ -8,6 +8,7 @@
     <ul
       v-infinite-scroll="loadMore"
       infinite-scroll-immediate-check="false"
+      infinite-scroll-distance="200"
       infinite-scroll-disabled="isChufa"
     >
       <li v-for="item in datalist" :key="item.commodityId">
