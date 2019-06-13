@@ -6,7 +6,6 @@
           <img :src="ban.url">
         </div>
       </div>
-      <!-- 如果需要分页器 -->
       <div class="swiper-pagination"></div>
     </div>
     <div class="distory">
@@ -22,8 +21,8 @@
     </div>
     <div class="imgdes">
       <ul>
-        <li v-for="img in desclist" :key="img.image.id">
-          <img :src="img.image.url">
+        <li v-for="(img,index) in desclist" :key="index">
+          <img :src="img.image.url" v-if="index !== 0">
         </li>
       </ul>
     </div>
