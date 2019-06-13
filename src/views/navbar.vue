@@ -1,17 +1,25 @@
 <template>
   <div class="nav">
     <nav-search></nav-search>
-    <nav-swipe></nav-swipe>
+    <nav-swipe v-show="navsisshow"></nav-swipe>
+    <navlist v-show="!navsisshow"></navlist>
   </div>
 </template>
 
 <script>
+import navlist from '@/views/navbar/navlist'
 import navSearch from '@/views/navbar/nav-search'
 import navSwipe from '@/views/navbar/nav-swipe'
 export default {
+  data () {
+    return {
+      navsisshow: true
+    }
+  },
   components: {
     navSearch,
-    navSwipe
+    navSwipe,
+    navlist
   }
 }
 </script>

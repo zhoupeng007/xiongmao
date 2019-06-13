@@ -70,7 +70,7 @@ export default {
     line-height: .61rem;
     white-space: nowrap;
     color: #43240c;
-    z-index: 99999;
+    z-index: 9;
     position: absolute;
     top: .1rem;
 }
@@ -79,7 +79,7 @@ export default {
     font-size: .2rem;
     font-weight: 500;
     color: #ff9e55;
-    z-index: 99999;
+    z-index: 9;
     position: absolute;
     top: 1rem;
 }

@@ -1,15 +1,16 @@
 <template>
   <div class="home_nav">
-    <div class="home">
-      <router-link to="/" class="home_nav_items" tag="div" active-class="navswiperbor">今日推荐</router-link>
-    </div>
-    <div class="line"></div>
-    <navSwiper :key="datalist.length">
-      <!--  eslint-disable-line -->
-      <div class="swiper-slide" v-for="data in datalist" :key="data.id" v-show="data.id !== 1" @click="xppluyou()">
-        <router-link :to="`/tab/${data.id}`" tag="div" class="xppnav2" active-class="navswiperbor">{{data.name}}</router-link>
+      <div class="home">
+        <router-link to="/" class="home_nav_items" tag="div" active-class="navswiperbor">今日推荐</router-link>
       </div>
-    </navSwiper>
+      <div class="line"></div>
+      <navSwiper :key="datalist.length">
+        <!--  eslint-disable-line -->
+        <div class="swiper-slide" v-for="data in datalist" :key="data.id" v-show="data.id !== 1" @click="xppluyou()">
+          <router-link :to="`/tab/${data.id}`" tag="div" class="xppnav2" active-class="navswiperbor">{{data.name}}</router-link>
+        </div>
+      </navSwiper>
+      <div class="dian" @click="navshow()"></div>
   </div>
 </template>
 
@@ -33,6 +34,9 @@ export default {
     xppluyou () {
       console.log(this.$route.params.id)
       bus.$emit('xppluyou', this.$route.params.id)
+    },
+    navshow () {
+
     }
   },
   components: {
@@ -79,5 +83,16 @@ export default {
         background-color: #877a73;
         float: left;
       }
+    .dian{
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODNGMDI2MjQ3RkQzMTFFN0IyOEQ4NzZDRTYxNjM2QjIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODNGMDI2MjU3RkQzMTFFN0IyOEQ4NzZDRTYxNjM2QjIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowQ0VCNzBGRjdGQzkxMUU3QjI4RDg3NkNFNjE2MzZCMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowQ0VCNzEwMDdGQzkxMUU3QjI4RDg3NkNFNjE2MzZCMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkCOUykAAAGWSURBVHja7Jc/SwNBEMXvzsMIYm8piJzaiaYyoqD4EewFK8FCSz+ApYq2it/BRhAV45/KwlJCECztTyEG9HyzTI5lGEjEW3LFPviRMMzxJtm9fXdhlmVBmRQFJVPpBopXJka6Nl0106CXvqL+oRDsgxbImBbXQtE/Cu7Aj9VbBLkfDVQD26BiGVe4Ni8G2gULyqD/Ve5Xyk39AA7Al1Wn74fgUfTvcX/Ryv1iXsMdppveecmcKfQHox/ID+TDtc/hGvPnItiw8oxOzhNQF/0DYJPzr8g8y/1ooHFwCQZF0xqYBq9WbYtjxoWMH+2hKWWYgGuJqM04XC3jF/GyNJQGqt2L2pkI4SJl/GjJUjALlsUeugEf4qJbMAmqDtLe+HU29Sc47/HiN8anvR/IR8dfomNYue2v+e6TGgNzDqLD+NFA9NOflFO5wedNatWWwAUYcnQwViMO1kRpSJQ3jHVHw+R+NNALaCsNbSVSnh1uH+MXc5qvKo8fpyLpScf8Xl9zEB3Gr7Op68qzj6ZvcMT46OiLfgUYAO8Hew+TIqSvAAAAAElFTkSuQmCC);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      width: .54rem;
+      height: .54rem;
+      position: absolute;
+      right: .4rem;
+      top: 50%;
+      margin-top: -.27rem;
+    }
   }
 </style>
