@@ -1,13 +1,16 @@
 <template>
   <div class="film">
     <banner></banner>
+    <grids></grids>
   </div>
 </template>
 <script>
 import banner from '@/views/tab/banner'
+import grids from '@/views/tab/film/grids'
 export default {
   components: {
-    banner
+    banner,
+    grids
   }
 }
 </script>
