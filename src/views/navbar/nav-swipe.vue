@@ -1,16 +1,20 @@
 <template>
   <div class="home_nav">
     <div class="home">
-      <router-link to="/" class="home_nav_items" tag="div" active-class="home_nav_items_acrive">今日推荐</router-link>
+      <router-link to="/" class="home_nav_items" tag="div" active-class="navswiperbor">今日推荐</router-link>
     </div>
     <div class="line"></div>
-    <navSwiper>
-      <div class="swiper-slide" v-for="data in datalist" :key="data.id"></div>
+    <navSwiper :key="datalist.length">
+      <!--  eslint-disable-line -->
+      <div class="swiper-slide" v-for="data in datalist" :key="data.id" v-show="data.id !== 1" @click="xppluyou()">
+        <router-link :to="`/tab/${data.id}`" tag="div" class="xppnav2" active-class="navswiperbor">{{data.name}}</router-link>
+      </div>
     </navSwiper>
   </div>
 </template>
 
 <script>
+import bus from '@/components/bus'
 import axios from 'axios'
 import navSwiper from '@/views/navbar/navSwiper'
 export default {
@@ -24,6 +28,12 @@ export default {
       console.log(res.data.data.list)
       this.datalist = res.data.data.list
     })
+  },
+  methods: {
+    xppluyou () {
+      console.log(this.$route.params.id)
+      bus.$emit('xppluyou', this.$route.params.id)
+    }
   },
   components: {
     navSwiper
@@ -57,9 +67,9 @@ export default {
         margin-right: 0;
         cursor: pointer;
       }
-      .home_nav_items_acrive{
-        color: #43240c !important;
-        border-bottom: 4px solid #43240c;
+      .navswiperbor{
+        color: #f6c !important;
+        border-bottom: 4px solid #f6c;
       }
     }
     .line{

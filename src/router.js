@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import tab1 from '@/views/tab/1'
-import tab2 from '@/views/tab/nuzhuang2'
+import tab from '@/views/tab/nuzhuang2'
+import ccc from '@/views/c_detail'
 Vue.use(Router)
 
 const router = new Router({
@@ -13,8 +14,12 @@ const router = new Router({
       component: tab1
     },
     {
-      path: '/tab/2',
-      component: tab2
+      path: '/tab/:id',
+      component: tab
+    },
+    {
+      path: '/c/:id',
+      component: ccc
     }
   ]
 })

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :key="luyou">
      <div class="split-line">
         <span class="befor">━━━━━◆</span>
         <span class="text">大家都在逛</span>
@@ -8,9 +8,10 @@
     <ul
       v-infinite-scroll="loadMore"
       infinite-scroll-immediate-check="false"
+      infinite-scroll-distance="200"
       infinite-scroll-disabled="isChufa"
     >
-      <li v-for="item in datalist" :key="item.commodityId">
+      <li v-for="item in datalist" :key="item.commodityId" @click="handeClick(item.id)">
         <div class="img">
           <img :src="item.image">
         </div>
@@ -28,6 +29,7 @@
   </div>
 </template>
 <script>
+import bus from '@/components/bus'
 import axios from 'axios'
 export default {
   data () {
@@ -35,21 +37,38 @@ export default {
       datalist: [],
       isChufa: false,
       current: 0,
-      number: 20
+      number: 20,
+      luyou: 2
     }
   },
   mounted () {
-    axios.get(`http://www.xiongmaoyouxuan.com/api/tab/2?start=0`).then(res => {
+    axios.get(`http://www.xiongmaoyouxuan.com/api/tab/${this.$route.params.id}?start=0`).then(res => {
       console.log(res.data.data.items.list)
       this.datalist = res.data.data.items.list
     })
+    bus.$on('xppluyou', res => {
+      this.luyou = res
+      this.$nextTick(() => {
+        axios.get(`http://www.xiongmaoyouxuan.com/api/tab/${this.luyou}?start=0`).then(res => {
+          console.log(res.data.data.items.list)
+          this.datalist = res.data.data.items.list
+        })
+      })
+    })
   },
   methods: {
+    handeClick (id) {
+      // 跳转路由--编程式导航--路径
+      this.$router.push(`/c/${id}`)
+
+      // 跳转路由--编程式导航--名字
+      // this.$router.push({ name: 'detail', params: { id: id } })
+    },
     loadMore () {
       this.isChufa = true
       this.current = this.current + this.number
       console.log('到底了 ajax请求', this.current)
-      axios.get(`http://www.xiongmaoyouxuan.com/api/tab/2/feeds?start=${this.current}&sort=0`).then(res => {
+      axios.get(`http://www.xiongmaoyouxuan.com/api/tab/${this.luyou}/feeds?start=${this.current}&sort=0`).then(res => {
         console.log(res.data.data.list)
         this.datalist = [...this.datalist, ...res.data.data.list]
         this.isChufa = false
