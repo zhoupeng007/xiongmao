@@ -1,16 +1,16 @@
 <template>
     <div v-if="datalist" class="grids">
-      <div class="grid">
+      <div class="grid" @click="wbxclick3()">
           <img :src="datalist[1].imageUrl" alt="" class="tu1">
           <span class="title">{{datalist[1].title}}</span>
           <br><span class="cheng">{{datalist[1].text}}</span>
       </div>
-      <div class="grid1">
+      <div class="grid1" @click="wbxclick(datalist[2].url.split('='))">
             <img :src="datalist[2].imageUrl" alt="">
             <span class="title1">{{datalist[2].title}}</span>
             <br><span class="fen">{{datalist[2].text}}</span>
       </div>
-      <div class="grid2">
+      <div class="grid2" @click="wbxclick1()">
             <img :src="datalist[3].imageUrl" alt="">
              <span class="title2">{{datalist[3].title}}</span>
             <br><span class="lv">{{datalist[3].text}}</span>
@@ -30,6 +30,21 @@ export default {
       console.log(res.data.data.gridsV2)
       this.datalist = res.data.data.gridsV2
     })
+  },
+  methods: {
+    wbxclick (id) {
+      // console.log(id)
+      this.$router.push(`/column/${id[1]}`)
+    },
+    wbxclick1 () {
+      this.$router.push(`/tab/26`)
+    },
+    wbxclick3 () {
+      this.$router.push(`/tab/3`)
+    }
+    // wbxclick(id){
+    //    this.$router.push(`/column/${id[3]}`)
+    // }
   }
 }
 </script>
