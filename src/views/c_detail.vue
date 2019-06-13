@@ -120,13 +120,26 @@ export default {
 }
 .bottom{
   background-color: #43240c;
+  height: 2.7rem;
+  position: relative;
+  overflow: hidden;
+
   .bottom_p{
-    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 90%;
+    height: .5rem;
+    line-height: .5rem;
     color: #fa521e;
-    padding: 1.2rem 0 1.3rem;
+    padding: .2rem;
     text-align: center;
-    cursor: pointer;
     font-size: .4rem;
+    border: 0.01rem solid #ccc;
+    border-radius: 0.5rem;
   }
 }
 </style>
