@@ -4,6 +4,7 @@ import tab1 from '@/views/tab/1'
 import tab from '@/views/tab/nuzhuang2'
 import ccc from '@/views/c_detail'
 import category from '@/views/category_detail'
+import column from '@/views/column_datail'
 Vue.use(Router)
 
 const router = new Router({
@@ -25,7 +26,12 @@ const router = new Router({
     {
       path: '/category/:id',
       component: category
+    },
+    {
+      path: '/column/:id',
+      component: column
     }
+
   ]
 })
 export default router
