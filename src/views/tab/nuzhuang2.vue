@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <host></host>
         <waterfall></waterfall>
     </div>

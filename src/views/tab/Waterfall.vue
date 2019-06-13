@@ -63,6 +63,7 @@ export default {
   padding: 0;
   margin: 0;
 }
+
  .split-line{
        height: 1.33rem;
        line-height: 1.33rem;
@@ -75,6 +76,7 @@ export default {
   .split-line .befor{
        color: #fdde4a;
    }
+
 ul {
   width: 100%;
   height: 100%;
