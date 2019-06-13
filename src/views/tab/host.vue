@@ -10,7 +10,7 @@
             </div>
         <!-- <split-line></split-line> -->
             <ul>
-                <li v-for="data in datalist" :key="data.id" @click="listClick((data.url).split('=')[1])">
+                <li v-for="data in datalist" :key="data.id" @click="listClick((data.url).split('='))">
                     <img :src="data.imageUrl" alt="">
                     <br><span>{{data.title}}</span>
                 </li>
@@ -31,7 +31,15 @@ export default {
   },
   methods: {
     listClick (id) {
-      this.$router.push(`/category/${id}`)
+      console.log(id)
+
+      console.log(id[0] === 'youxuan://column?id')
+
+      if (id[0] === 'youxuan://column?id') {
+        this.$router.push(`/column/${id[1]}`)
+      } else {
+        this.$router.push(`/category/${id[1]}`)
+      }
     }
   },
 
