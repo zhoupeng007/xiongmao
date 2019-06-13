@@ -6,7 +6,7 @@
     <div class="line"></div>
     <navSwiper :key="datalist.length">
       <!--  eslint-disable-line -->
-      <div class="swiper-slide" v-for="data in datalist" :key="data.id" v-show="data.id !== 1">
+      <div class="swiper-slide" v-for="data in datalist" :key="data.id" v-show="data.id !== 1" @click="xppluyou()">
         <router-link :to="`/tab/${data.id}`" tag="div" class="xppnav2">{{data.name}}</router-link>
       </div>
     </navSwiper>
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import bus from '@/components/bus'
 import axios from 'axios'
 import navSwiper from '@/views/navbar/navSwiper'
 export default {
@@ -27,6 +28,12 @@ export default {
       console.log(res.data.data.list)
       this.datalist = res.data.data.list
     })
+  },
+  methods: {
+    xppluyou () {
+      console.log(this.$route.params.id)
+      bus.$emit('xppluyou', this.$route.params.id)
+    }
   },
   components: {
     navSwiper

@@ -19,20 +19,27 @@
 </template>
 
 <script>
+import bus from '@/components/bus'
 import axios from 'axios'
 export default {
   data () {
     return {
       datalist: [],
-      title: ''
+      title: '',
+      luyou: 2
     }
   },
 
   mounted () {
-    axios.get('/api/tab/2?start=0').then(res => {
-      console.log(res.data.data)
-      this.datalist = res.data.data.categories
-      this.title = res.data.data.categoriesTitle
+    bus.$on('xppluyou', res => {
+      this.luyou = res
+      this.$nextTick(() => {
+        axios.get(`/api/tab/${this.luyou}?start=0`).then(res => {
+          console.log(res.data.data)
+          this.datalist = res.data.data.categories
+          this.title = res.data.data.categoriesTitle
+        })
+      })
     })
   }
 }
