@@ -13,7 +13,7 @@
     >
       <li v-for="item in datalist" :key="item.commodityId" @click="handeClick(item.id)">
         <div class="img">
-          <img :src="item.image">
+          <img :src="item.image" v-if="item.id !== 13258076">
         </div>
         <p class="title">{{item.title}}</p>
         <p class="des">
