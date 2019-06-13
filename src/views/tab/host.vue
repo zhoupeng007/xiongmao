@@ -31,6 +31,11 @@ export default {
   },
 
   mounted () {
+    axios.get(`/api/tab/${this.$route.params.id}?start=0`).then(res => {
+      console.log(res.data.data)
+      this.datalist = res.data.data.categories
+      this.title = res.data.data.categoriesTitle
+    })
     bus.$on('xppluyou', res => {
       this.luyou = res
       this.$nextTick(() => {

@@ -42,6 +42,10 @@ export default {
     }
   },
   mounted () {
+    axios.get(`http://www.xiongmaoyouxuan.com/api/tab/${this.$route.params.id}?start=0`).then(res => {
+      console.log(res.data.data.items.list)
+      this.datalist = res.data.data.items.list
+    })
     bus.$on('xppluyou', res => {
       this.luyou = res
       this.$nextTick(() => {

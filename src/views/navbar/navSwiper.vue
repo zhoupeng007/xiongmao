@@ -45,9 +45,14 @@ export default {
     width: auto;
     font-size: .3rem;
     line-height: 1.3rem;
+    box-sizing: border-box;
   }
   .swiper-slide{
     height: 100%;
     width:auto;
+  }
+  .navswiperbor{
+    color: #43240c !important;
+    border-bottom: 4px solid #43240c;
   }
 </style>
