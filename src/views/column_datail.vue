@@ -1,5 +1,9 @@
 <template>
   <div>
+      <div class="div">
+          <img :src="imglist.imageUrl" class="imgs">
+          <p class="text">{{imglist.text}}</p>
+      </div>
     <ul
       v-infinite-scroll="loadMore"
       infinite-scroll-immediate-check="false"
@@ -31,12 +35,17 @@ export default {
       distlist: [],
       isChufa: false,
       current: 0,
-      number: 20
+      number: 20,
+      imglist: []
     }
   },
   mounted () {
-    axios.get(`http://quan.lukou.com/api/category/${this.$route.params.id}/items?start=0`).then(res => {
-      this.distlist = res.data.data.items.list
+    axios.get(`http://quan.lukou.com/api/column/${this.$route.params.id}/items?start=0`).then(res => {
+      this.distlist = res.data.data.list
+    })
+    axios.get(`http://quan.lukou.com/api/column/${this.$route.params.id}`).then(res => {
+      console.log(res.data.data.share)
+      this.imglist = res.data.data.share
     })
   },
   methods: {
@@ -47,8 +56,7 @@ export default {
       this.isChufa = true
       this.current = this.current + this.number
       console.log('到底了 ajax请求', this.current)
-      axios.get(`http://quan.lukou.com/api/category/${this.$route.params.id}/items?start=${this.current}&sort=0`).then(res => {
-        console.log(res.data.data.items.list)
+      axios.get(`http://quan.lukou.com/api/column/${this.$route.params.id}/items?start=${this.current}&sort=0`).then(res => {
         this.distlist = [...this.distlist, ...res.data.data.list]
         this.isChufa = false
       })
@@ -62,9 +70,24 @@ export default {
   padding: 0;
   margin: 0;
 }
+.div{
+    margin-top: 2.5rem;
+    width: 100%;
+    height: auto;
+    border-bottom: 0.08rem solid #f5f5f5;
+    .imgs{
+        width: 100%;
+    }
+    .text{
+        font-size: .32rem;
+        color: #877a73;
+        padding: .533rem .48rem .533rem .8rem;
+        box-sizing: border-box;
+        line-height: 1.4;
+    }
+}
 
 ul {
-  margin-top: 2.5rem;
   width: 100%;
   height: 100%;
   display: flex;
