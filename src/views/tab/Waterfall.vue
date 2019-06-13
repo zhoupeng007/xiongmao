@@ -10,7 +10,7 @@
       infinite-scroll-immediate-check="false"
       infinite-scroll-disabled="isChufa"
     >
-      <li v-for="item in datalist" :key="item.commodityId">
+      <li v-for="item in datalist" :key="item.commodityId" @click="handeClick(item.id)">
         <div class="img">
           <img :src="item.image">
         </div>
@@ -45,6 +45,13 @@ export default {
     })
   },
   methods: {
+    handeClick (id) {
+      // 跳转路由--编程式导航--路径
+      this.$router.push(`/c/${id}`)
+
+      // 跳转路由--编程式导航--名字
+      // this.$router.push({ name: 'detail', params: { id: id } })
+    },
     loadMore () {
       this.isChufa = true
       this.current = this.current + this.number
