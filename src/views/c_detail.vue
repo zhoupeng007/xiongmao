@@ -27,6 +27,9 @@
         </li>
       </ul>
     </div>
+    <div class="bottom">
+      <p class="bottom_p">去熊猫优选APP，商品详情更丰富</p>
+    </div>
   </div>
 </template>
 <script>
@@ -115,5 +118,16 @@ export default {
 .imgdes img {
   width: 100%;
   height: auto;
+}
+.bottom{
+  background-color: #43240c;
+  .bottom_p{
+    display: block;
+    color: #fa521e;
+    padding: 1.2rem 0 1.3rem;
+    text-align: center;
+    cursor: pointer;
+    font-size: .4rem;
+  }
 }
 </style>
