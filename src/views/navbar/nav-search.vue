@@ -15,16 +15,13 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
+<style lang="scss" scoped>
   .demo-input-suffix{
     width: 85%;
     height: .5rem;
     margin-left: 50%;
     transform: translate(-50%)
   }
-</style>
-<style lang="scss" scoped>
   .nav-search{
     width: 100%;
     overflow: hidden;
