@@ -1,6 +1,8 @@
 <template>
   <div class="nav" v-show="$store.state.navcshow">
-    <nav-search v-show="$store.state.xiding"></nav-search>
+    <transition name="fade">
+      <nav-search v-show="$store.state.xiding"></nav-search>
+    </transition>
     <nav-swipe v-show="$store.state.navshow"></nav-swipe>
     <navlist v-show="!$store.state.navshow"></navlist>
   </div>
@@ -32,5 +34,11 @@ export default {
   right: 0;
   top: 0;
   background-color: #fdde4a;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
