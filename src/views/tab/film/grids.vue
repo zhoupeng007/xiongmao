@@ -23,7 +23,7 @@
           <p class="weight">——</p>
           <p class="hui">热销排行</p>
         </div>
-    <div class="swiper-wrapper" style="padding:0 0 0 1.2rem">
+    <div class="swiper-wrapper" style="padding:0 06 0 1.2rem">
         <div class="swiper-slide" v-for="items in swiperlist" :key="items.id">
           <img :src="items.image" alt="">
           <p class="title">{{items.title}}</p>
@@ -44,7 +44,7 @@ export default {
     }
   },
   mounted () {
-    axios.get('api/tab/1?start=0').then(res => {
+    axios.get('http://www.xiongmaoyouxuan.com/api/tab/1?start=0').then(res => {
       console.log(res.data.data.gridsV2)
       console.log(res.data.data.topList)
       this.datalist = res.data.data.gridsV2

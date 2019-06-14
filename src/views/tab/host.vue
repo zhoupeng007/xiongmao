@@ -44,7 +44,7 @@ export default {
   },
 
   mounted () {
-    axios.get(`/api/tab/${this.$route.params.id}?start=0`).then(res => {
+    axios.get(`http://www.xiongmaoyouxuan.com/api/tab/${this.$route.params.id}?start=0`).then(res => {
       console.log(res.data.data)
       this.datalist = res.data.data.categories
       this.title = res.data.data.categoriesTitle
@@ -52,7 +52,7 @@ export default {
     bus.$on('xppluyou', res => {
       this.luyou = res
       this.$nextTick(() => {
-        axios.get(`/api/tab/${this.luyou}?start=0`).then(res => {
+        axios.get(`http://www.xiongmaoyouxuan.com/api/tab/${this.luyou}?start=0`).then(res => {
           console.log(res.data.data)
           this.datalist = res.data.data.categories
           this.title = res.data.data.categoriesTitle

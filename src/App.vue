@@ -15,7 +15,7 @@ export default {
     }
   },
   mounted () {
-    axios.get('/api/tab/1?start=0').then(res => {
+    axios.get('http://www.xiongmaoyouxuan.com/api/tab/1?start=0').then(res => {
       console.log(res.data.data.items.list)
       this.datalist = res.data.data.items.list
     })
