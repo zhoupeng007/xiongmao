@@ -8,6 +8,11 @@
 import banner from '@/views/tab/banner'
 import grids from '@/views/tab/film/grids'
 export default {
+  data () {
+    return {
+
+    }
+  },
   components: {
     banner,
     grids
