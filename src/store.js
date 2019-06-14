@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     navshow: true,
-    navcshow: true
+    navcshow: true,
+    xiding: true
   },
   mutations: {
     navisshow (store, xpp) {
@@ -14,6 +15,12 @@ export default new Vuex.Store({
     },
     navcisshow (store, xpp) {
       store.navcshow = !store.navcshow
+    },
+    xiding (store, xpp) {
+      store.xiding = false
+    },
+    xiding1 (store, xpp) {
+      store.xiding = true
     }
   },
   actions: {

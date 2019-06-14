@@ -1,6 +1,6 @@
 <template>
   <div class="nav" v-show="$store.state.navcshow">
-    <nav-search></nav-search>
+    <nav-search v-show="$store.state.xiding"></nav-search>
     <nav-swipe v-show="$store.state.navshow"></nav-swipe>
     <navlist v-show="!$store.state.navshow"></navlist>
   </div>
