@@ -19,6 +19,16 @@ export default {
       console.log(res.data.data.items.list)
       this.datalist = res.data.data.items.list
     })
+    window.onscroll = this.handleScroll
+  },
+  methods: {
+    handleScroll () {
+      if (document.documentElement.scrollTop > 200) {
+        this.$store.commit('xiding')
+      } else {
+        this.$store.commit('xiding1')
+      }
+    }
   },
   components: {
     navbar
