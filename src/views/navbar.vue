@@ -1,8 +1,8 @@
 <template>
-  <div class="nav">
+  <div class="nav" v-show="$store.state.navcshow">
     <nav-search></nav-search>
-    <nav-swipe v-show="navsisshow"></nav-swipe>
-    <navlist v-show="!navsisshow"></navlist>
+    <nav-swipe v-show="$store.state.navshow"></nav-swipe>
+    <navlist v-show="!$store.state.navshow"></navlist>
   </div>
 </template>
 

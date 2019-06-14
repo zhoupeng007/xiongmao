@@ -22,7 +22,7 @@
     <div class="imgdes">
       <ul>
         <li v-for="(img,index) in desclist" :key="index">
-          <img :src="img.image.url" v-if="index !== 0">
+          <img :src="img.image.url" v-if="index !== 0" >
         </li>
       </ul>
     </div>
@@ -67,6 +67,12 @@ export default {
         disableOnInteraction: false
       }
     })
+  },
+  beforeCreate () {
+    this.$store.commit('navcisshow')
+  },
+  beforeDestroy () {
+    this.$store.commit('navcisshow')
   }
 }
 </script>

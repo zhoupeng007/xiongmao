@@ -16,6 +16,10 @@ const router = new Router({
       component: tab1
     },
     {
+      path: '/tab/1',
+      redirect: '/'
+    },
+    {
       path: '/tab/:id',
       component: tab
     },

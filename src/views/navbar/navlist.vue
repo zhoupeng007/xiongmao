@@ -2,20 +2,21 @@
   <div>
     <div class="navlisthead">
       <span>全部分类</span>
-      <span class="listclose">X</span>
+      <span class="listclose" @click="navshow()">X</span>
     </div>
-    <ul class="listbody" v-if="datalist">
-      <li class="listbody_li" v-for="data in datalist" :key="data.id">
+    <ul class="listbody" v-if="datalist" @click="xppluyou()">
+      <router-link :to="`/tab/${data.id}`" tag="li" class="listbody_li" v-for="data in datalist" :key="data.id">
         <div>
           <img :src="data.imageUrl" alt="">
           <span>{{data.name}}</span>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
 
 <script>
+import bus from '@/components/bus'
 import axios from 'axios'
 export default {
   data () {
@@ -27,6 +28,16 @@ export default {
     axios.get('http://www.xiongmaoyouxuan.com/api/tabs?sa=').then(res => {
       this.datalist = res.data.data.list
     })
+  },
+  methods: {
+    navshow () {
+      this.$store.commit('navisshow')
+    },
+    xppluyou () {
+      console.log(this.$route.params.id)
+      bus.$emit('xppluyou', this.$route.params.id)
+      this.navshow()
+    }
   }
 }
 </script>
@@ -57,6 +68,7 @@ export default {
       font-size: .32rem;
       margin-bottom: .427rem;
       img{
+        display: inline-block;
         width: 1.28rem;
         height: 1.28rem;
         text-align: center;

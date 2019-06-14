@@ -36,7 +36,7 @@ export default {
       bus.$emit('xppluyou', this.$route.params.id)
     },
     navshow () {
-
+      this.$store.commit('navisshow')
     }
   },
   components: {
