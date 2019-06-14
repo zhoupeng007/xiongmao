@@ -1,4 +1,5 @@
 <template>
+  <div>
     <div v-if="datalist" class="grids">
       <div class="grid" @click="wbxclick3()">
           <img :src="datalist[1].imageUrl" alt="" class="tu1">
@@ -16,19 +17,50 @@
             <br><span class="lv">{{datalist[3].text}}</span>
       </div>
     </div>
+    <div class="swiper-container baobao">
+          <div class="leftfloat">
+          <p class="weight">HOT</p>
+          <p class="weight">——</p>
+          <p class="hui">热销排行</p>
+        </div>
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="items in swiperlist" :key="items.id">
+          <img :src="items.image" alt="">
+          <p class="title">{{items.title}}</p>
+          <p class="price">￥{{items.price}}</p>
+        </div>
+    </div>
+</div>
+    </div>
 </template>
 <script>
 import axios from 'axios'
+import Swiper from 'swiper'
 export default {
   data () {
     return {
-      datalist: null
+      datalist: null,
+      swiperlist: []
     }
   },
   mounted () {
     axios.get('api/tab/1?start=0').then(res => {
       console.log(res.data.data.gridsV2)
+      console.log(res.data.data.topList)
       this.datalist = res.data.data.gridsV2
+      this.swiperlist = res.data.data.topList
+    })
+  },
+  updated () {
+    // eslint-disable-next-line
+    var mySwiper = new Swiper('.baobao', {
+      slidesPerView: 4,
+      spaceBetween: 30,
+      centeredSlides: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      }
     })
   },
   methods: {
@@ -48,10 +80,56 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="scss" scoped>
 *{
   padding: 0;
   margin: 0;
+}
+.swiper-container {
+    width: 100%;
+    height: auto;
+    position: relative;
+    img{
+      width:100%;
+      height: auto;
+    }
+    p.title{
+      font-size: .29rem;
+      width: 100%;
+      height: .45rem;
+      overflow: hidden;
+      text-align: left;
+      text-overflow: ellipsis;
+      line-height: .45rem;
+      color: #43240c;
+      white-space: nowrap;
+    }
+    p.price{
+      font-size: .29rem;
+      height: .61rem;
+      line-height: .61rem;
+      text-align: center;
+      vertical-align: bottom;
+      color: #f60;
+
+    }
+    .leftfloat{
+      width: .8rem;
+      height: 3.44rem;
+      font-size: .3rem;
+      padding:0.1rem;
+      background-color: #fee44e;
+      position: absolute;
+      left:0;
+      top:0;
+      z-index: 3;
+      .weight{
+        font-weight: 600;
+      }
+      .hui{
+        color: #43240c;
+      }
+    }
 }
 .grids{
   box-sizing: border-box;
