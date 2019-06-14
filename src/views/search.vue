@@ -1,30 +1,33 @@
 <template>
   <div>
-    <div class="header_search">
-      <p class="return">返回</p>
-      <div class="nav-search">
-        <div class="demo-input-suffix" @click="tosearch()">
-          <el-input placeholder="搜索商品,发现更多优选" prefix-icon="el-icon-search"></el-input>
-        </div>
-      </div>
-      <p class="header_title_search">搜索</p>
-    </div>
+    <headersearch></headersearch>
     <div class="hot_search">
       <p>热门搜索</p>
       <ul class="flex">
-        <li v-for="(hots,index) in hotlist" :key="index" v-show='index <= 10'>{{hots.word}}</li>
+        <li
+          v-for="(hots,index) in hotlist"
+          :key="index"
+          v-show="index <= 10"
+          @click="toseaech()"
+        >{{hots.word}}</li>
       </ul>
     </div>
     <div class="categories">
       <p>商品分类</p>
       <ul class="flex">
-        <li v-for="(categories,index) in categorieslist" v-show='index !== 0' :key="categories.id" @click="tabclick(categories.id)">{{categories.name}}</li>
+        <li
+          v-for="(categories,index) in categorieslist"
+          v-show="index !== 0"
+          :key="categories.id"
+          @click="tabclick(categories.id)"
+        >{{categories.name}}</li>
       </ul>
     </div>
   </div>
 </template>
 <script>
 import axios from 'axios'
+import headersearch from '@/views/tab/search/header_search'
 export default {
   data () {
     return {
@@ -32,7 +35,13 @@ export default {
       categorieslist: []
     }
   },
+  components: {
+    headersearch
+  },
   methods: {
+    toseaech () {
+      this.$router.push(`/s`)
+    },
     tabclick (id) {
       window.location.href = `/#/tab/${id}`
     }
@@ -89,7 +98,6 @@ export default {
   .demo-input-suffix {
     width: 100%;
     height: 0.5rem;
-    margin-left: 50%;
     margin-top: 0.1rem;
   }
   .nav-search {
@@ -103,31 +111,30 @@ export default {
     font-size: 0;
   }
 }
-.hot_search{
-    overflow: hidden;
-    p{
-        color: #877a73;
-        font-size: .4rem;
-        margin: .533rem;
-    }
+.hot_search {
+  overflow: hidden;
+  p {
+    color: #877a73;
+    font-size: 0.4rem;
+    margin: 0.533rem;
+  }
 }
-.categories{
-    overflow: hidden;
-    p{
-        color: #877a73;
-        font-size: .4rem;
-        margin: .533rem;
-    }
-
+.categories {
+  overflow: hidden;
+  p {
+    color: #877a73;
+    font-size: 0.4rem;
+    margin: 0.533rem;
+  }
 }
 ul.flex {
-display: flex;
-flex-wrap: wrap;
-width: 100%;
-height: auto;
-margin: .533rem;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  margin: 0.533rem;
 
-li {
+  li {
     width: 25%;
     text-align: center;
     color: #43240c;
@@ -136,9 +143,8 @@ li {
     box-sizing: border-box;
     margin: 0 0.3rem 0.4rem 0;
     border-radius: 0.2rem;
-    font-size: .3rem;
+    font-size: 0.3rem;
     display: inline-block;
+  }
 }
-}
-
 </style>
