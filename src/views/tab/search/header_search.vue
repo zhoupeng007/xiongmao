@@ -12,7 +12,6 @@
   </div>
 </template>
 <script>
-import bus from '@/components/bus'
 export default {
   data () {
     return {
@@ -22,8 +21,7 @@ export default {
   methods: {
     search () {
       if (this.myvalue !== '') {
-        this.$router.push(`/s`)
-        bus.$emit('searchvalue', this.myvalue)
+        this.$router.push(`/s/${this.myvalue}`)
       } else {
       }
     }
@@ -54,7 +52,6 @@ export default {
     color: #43240c;
   }
   .header_title_search {
-    float: right;
     height: 1.333rem;
     line-height: 1.333rem;
     font-size: 0.4rem;

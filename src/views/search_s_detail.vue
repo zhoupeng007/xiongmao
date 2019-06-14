@@ -1,6 +1,5 @@
 <template>
   <div>
-    <headersearch></headersearch>
     <ul
       v-infinite-scroll="loadMore"
       infinite-scroll-immediate-check="false"
@@ -30,9 +29,7 @@
   </div>
 </template>
 <script>
-import bus from '@/components/bus'
 import axios from 'axios'
-import headersearch from '@/views/tab/search/header_search'
 export default {
   data () {
     return {
@@ -40,19 +37,30 @@ export default {
       isChufa: false,
       current: 0,
       number: 40,
-      word: ''
+      word: '',
+      isfixed: true
     }
   },
   mounted () {
-    bus.$on('searchvalue', res => {
-      this.word = res
-    })
     axios
       .get(
-        'http://www.xiongmaoyouxuan.com/api/search?word=T%E6%81%A4+%E5%A5%B3&start=0&sort=0&couponOnly=NaN&minPrice=0&maxPrice=99999'
+        `http://www.xiongmaoyouxuan.com/api/search?word=${
+          this.$route.params.id
+        }&start=0&sort=0&couponOnly=NaN&minPrice=0&maxPrice=99999`
       )
       .then(res => {
         this.searchlist = res.data.data.list
+        console.log(res.data.data.list)
+      })
+    axios
+      .get(
+        `http://www.xiongmaoyouxuan.com/api/search?word=${
+          this.word
+        }&start=0&sort=0&couponOnly=NaN&minPrice=0&maxPrice=99999`
+      )
+      .then(res => {
+        this.searchlist = res.data.data.list
+        console.log(res.data.data.list)
       })
   },
   beforeCreate () {
@@ -60,9 +68,6 @@ export default {
   },
   beforeDestroy () {
     this.$store.commit('navcisshow')
-  },
-  components: {
-    headersearch
   },
   methods: {
     searchC (id) {

@@ -42,7 +42,7 @@ const router = new Router({
       component: search
     },
     {
-      path: '/s',
+      path: '/s/:id',
       component: searchs
     }
 

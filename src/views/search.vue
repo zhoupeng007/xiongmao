@@ -8,7 +8,7 @@
           v-for="(hots,index) in hotlist"
           :key="index"
           v-show="index <= 10"
-          @click="toseaech()"
+          @click="toseaech(hots.word)"
         >{{hots.word}}</li>
       </ul>
     </div>
@@ -39,8 +39,8 @@ export default {
     headersearch
   },
   methods: {
-    toseaech () {
-      this.$router.push(`/s`)
+    toseaech (id) {
+      this.$router.push(`/s/${id}`)
     },
     tabclick (id) {
       window.location.href = `/#/tab/${id}`
