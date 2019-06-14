@@ -1,11 +1,21 @@
 <template>
   <div class="nav-search">
-    <div class="demo-input-suffix">
+    <div class="demo-input-suffix" @click="tosearch()">
       <el-input placeholder="搜索商品,发现更多优选" prefix-icon="el-icon-search">
       </el-input>
     </div>
   </div>
 </template>
+<script>
+export default {
+  methods: {
+    tosearch () {
+      window.location.href = '/#/search'
+    }
+  }
+}
+</script>
+
 <style lang="scss">
   .demo-input-suffix{
     width: 85%;
