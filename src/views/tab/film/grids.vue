@@ -23,7 +23,7 @@
             <p class="weight">——</p>
             <p class="hui">热销排行</p>
         </div>
-      <div class="swiper-wrapper">
+    <div class="swiper-wrapper" style="padding:0 0 0 1.2rem">
         <div class="swiper-slide" v-for="items in swiperlist" :key="items.id">
             <img :src="items.image" alt="">
             <p class="title">{{items.title}}</p>
@@ -54,7 +54,7 @@ export default {
   updated () {
     // eslint-disable-next-line
     var mySwiper = new Swiper('.baobao', {
-      slidesPerView: 3,
+      slidesPerView: 4,
       spaceBetween: 10,
       pagination: {
         el: '.swiper-pagination',
@@ -88,9 +88,7 @@ export default {
     width: 100%;
     height: auto;
     position: relative;
-    .swiper-wrapper{
-      margin-left:1.2rem;
-    }
+    overflow: hidden;
     img{
       width:100%;
       height: auto;
