@@ -18,19 +18,19 @@
       </div>
     </div>
     <div class="swiper-container baobao">
-          <div class="leftfloat">
-          <p class="weight">HOT</p>
-          <p class="weight">——</p>
-          <p class="hui">热销排行</p>
+        <div class="leftfloat">
+            <p class="weight p">HOT</p>
+            <p class="weight">——</p>
+            <p class="hui">热销排行</p>
         </div>
-    <div class="swiper-wrapper">
+      <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="items in swiperlist" :key="items.id">
-          <img :src="items.image" alt="">
-          <p class="title">{{items.title}}</p>
-          <p class="price">￥{{items.price}}</p>
+            <img :src="items.image" alt="">
+            <p class="title">{{items.title}}</p>
+            <p class="price">￥{{items.price}}</p>
         </div>
+      </div>
     </div>
-</div>
     </div>
 </template>
 <script>
@@ -54,9 +54,8 @@ export default {
   updated () {
     // eslint-disable-next-line
     var mySwiper = new Swiper('.baobao', {
-      slidesPerView: 4,
-      spaceBetween: 30,
-      centeredSlides: true,
+      slidesPerView: 3,
+      spaceBetween: 10,
       pagination: {
         el: '.swiper-pagination',
         clickable: true
@@ -89,6 +88,9 @@ export default {
     width: 100%;
     height: auto;
     position: relative;
+    .swiper-wrapper{
+      margin-left:1.2rem;
+    }
     img{
       width:100%;
       height: auto;
@@ -123,6 +125,9 @@ export default {
       left:0;
       top:0;
       z-index: 3;
+      .p{
+        margin-top:.8rem;
+      }
       .weight{
         font-weight: 600;
       }
