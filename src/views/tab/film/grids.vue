@@ -18,19 +18,19 @@
       </div>
     </div>
     <div class="swiper-container baobao">
-          <div class="leftfloat">
-          <p class="weight">HOT</p>
-          <p class="weight">——</p>
-          <p class="hui">热销排行</p>
+        <div class="leftfloat">
+            <p class="weight p">HOT</p>
+            <p class="weight">——</p>
+            <p class="hui">热销排行</p>
         </div>
     <div class="swiper-wrapper" style="padding:0 06 0 1.2rem">
         <div class="swiper-slide" v-for="items in swiperlist" :key="items.id">
-          <img :src="items.image" alt="">
-          <p class="title">{{items.title}}</p>
-          <p class="price">￥{{items.price}}</p>
+            <img :src="items.image" alt="">
+            <p class="title">{{items.title}}</p>
+            <p class="price">￥{{items.price}}</p>
         </div>
+      </div>
     </div>
-</div>
     </div>
 </template>
 <script>
@@ -123,6 +123,9 @@ export default {
       left:0;
       top:0;
       z-index: 3;
+      .p{
+        margin-top:.8rem;
+      }
       .weight{
         font-weight: 600;
       }
